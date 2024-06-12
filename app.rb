@@ -5,12 +5,10 @@ require './models'
 enable :sessions
 
 get '/' do
-  session[:test]
-  erb :index
+  
 end
 
 get '/signin' do
-  session[:test] = "test"
   erb :sign_in
 end
 
@@ -22,15 +20,23 @@ post '/signin' do
   user = User.find_by(mail: params[:mail])
   if user && user.authenticate(params[:password])
     session[:user] = user.id
+    redirect '/home'
+  else
+    redirect '/signin'
   end
-  redirect '/'
 end
 
 post '/signup' do
-  user = User.create(mail: params[:mail], password: params[:password], password_confirmation: params[:password_confirmation])
+  user = User.create(nickname: params[:nickname], mail: params[:mail], password: params[:password], password_confirmation: params[:password_confirmation])
   if user.persisted?
     session[:user] = user.id
+    redirect '/home'
+  else
+    redirect '/signup'
   end
-  redirect '/'
+end
+
+get '/home' do
+  erb :index
 end
 
