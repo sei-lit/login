@@ -42,6 +42,8 @@ body {
   font-family: noto-sans-jp-medium;
 }
 
+/* signin/up.erb */
+
 .sign_form {
   background-color: #EEF0F3;
   width: 100vw;
@@ -65,9 +67,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.title {
   color: #FB5896;
   font-family: agbalumo-regular;
 }
@@ -125,4 +124,83 @@ input[type="submit"] {
   font-weight: 700;
   color: #FB5896;
   text-decoration: none;
+}
+
+/* index.erb */
+
+.content {
+  margin-bottom: 250px;
+}
+
+.header {
+  background: url('/img/performer.jpeg') no-repeat center center;
+  background-size: cover;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: darken;
+}
+
+.content {
+  margin-top: 50px;
+}
+
+.article {
+  padding: 1em 20% 0;
+  font-family: noto-sans-jp-bold;
+}
+
+.article-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.article-header img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #EFEFEF;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.article-header p {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.article-date{
+  font-size: 11px;
+  line-height: 2.0;
+  color: #6F6F6F;
+}
+
+.article h2{
+  font-size: 30px;
+  margin: 20px 0px;
+  line-height: 1.6;
+}
+
+.image{
+  width: 100%;
+  height: 587px;
+  object-fit: cover;
+  border: 1px solid #EFEFEF;
+  border-radius: 10px;
+}
+
+.article-text{
+  line-height: 2.0;
+  font-size: 24px;
+  font-family: noto-sans-jp-midium;
+  margin-bottom: 1.5em;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.article-text p{
+  margin-bottom: 1em;
 }
