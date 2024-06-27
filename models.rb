@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
     has_secure_password
     
     validates :name,
-      presence: true
+      presence: true,
+      uniqueness: true
     
     validates :mail, 
       presence: true, 
