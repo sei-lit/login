@@ -6,37 +6,39 @@ require './models'
 enable :sessions
 
 get '/' do
-  if session[:user]
-    erb :index
-  else
+    user_id = session[:user]
+    if user_id
+        erb :index
+    else
+        redirect "/signin"
+    end
+end
+
+get "/signin" do
     erb :sign_in
-  end
 end
 
-get '/signin' do
-  erb :sign_in
+post "/signin" do
+    user = Users.find_by(email: params[:email])
+    if user && user.authenticate(params[:password_digest])
+        session[:user] = user.id
+        redirect "/"
+    else
+        redirect "signin"
+    end
 end
 
-get '/signup' do
-  erb :sign_up
+get "/signup" do
+    erb :sign_up
 end
 
-post '/signin' do
-  user = User.find_by(mail: params[:mail])
-  if user && user.authenticate(params[:password])
-    session[:user] = user.id
-    redirect '/'
-  else
-    redirect '/signin'
-  end
+post "/signup" do
+    user = Users.create(name: params[:name], email: params[:email], password_digest: params[:password_digest])
+    if user.persisted?
+        session[:user] = user.id
+        redirect "/"
+    else
+        redirect "signup"
+    end
 end
 
-post '/signup' do
-  user = User.create(name: params[:name], mail: params[:mail], password: params[:password], password_confirmation: params[:password_confirmation])
-  if user.persisted?
-    session[:user] = user.id
-    redirect '/'
-  else
-    redirect '/signup'
-  end
-end

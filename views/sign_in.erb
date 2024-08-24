@@ -13,10 +13,17 @@
           <h1>Bilson</h1>
           <p>Official Fanclub</p>
         </div>
-        <form action="/signin" method="post">
-          <input type="text" name="mail" placeholder="メールアドレス">
-          <input type="password" name="password" placeholder="パスワード">
-          <input type="submit" value="ログイン">
+        <!-- ここからコードを書こう -->
+        <form action="/signin", method="POST">
+          <div>
+            <input type="email" name="email" placeholder="Email">
+          </div>
+          <div>
+            <input type="password" name="password_digest" placeholder="パスワード">
+          </div>
+          <div>
+            <input type="submit" value="ログイン">
+          </div>
         </form>
         <p class="footer">はじめてご利用の方は<a href="/signup">こちら</a></p>
       </div>
